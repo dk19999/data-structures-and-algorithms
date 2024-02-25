@@ -41,6 +41,15 @@ class LinkedList {
     return this;
   }
 
+  clear() {
+    this.head = null;
+
+    this.tail = null;
+
+    this.length = 0;
+    return this;
+  }
+
 }
 
 const l1 = new LinkedList();
