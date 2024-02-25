@@ -92,6 +92,78 @@ class LinkedList {
     return this;
   }
 
+  removeFirst() {
+    if (!this.head) {
+      return this;
+    }
+
+    this.head = this.head.next;
+    if (!this.head) {
+      this.tail = null;
+    }
+
+    this.length--;
+    return this;
+  }
+
+  removeLast() {
+    if (!this.head) {
+      return this;
+    }
+
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+      this.length = 0;
+      return this;
+    }
+
+    let currentNode = this.head;
+    let nodeBeforeTail = null;
+
+    while (currentNode.next) {
+      nodeBeforeTail = currentNode;
+      currentNode = currentNode.next;
+    }
+
+    nodeBeforeTail.next = null;
+    this.tail = nodeBeforeTail;
+
+    this.length--;
+
+    return this;
+  }
+
+  removeAt(index) {
+    const isIndexOutOfBound = index < 0 || index >= this.length;
+
+    if (isIndexOutOfBound) {
+      return this;
+    }
+
+    if (index === 0) {
+      this.head = this.head.next;
+
+      if (!this.head) {
+        this.tail = null;
+      }
+      return this;
+    }
+
+    let nodeBeforeIndex = this.head;
+
+    for (let i = 0; i < index - 1; i++) {
+      nodeBeforeIndex = nodeBeforeIndex.next;
+    }
+
+    if (index === this.length - 1) {
+      this.tail = nodeBeforeIndex;
+    }
+
+    nodeBeforeIndex.next = nodeBeforeIndex.next.next;
+    return this;
+  }
+
 }
 
 const l1 = new LinkedList();
