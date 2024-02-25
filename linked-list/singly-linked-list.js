@@ -164,6 +164,18 @@ class LinkedList {
     return this;
   }
 
+  find(value) {
+    let currentNode = this.head;
+
+    while (currentNode) {
+      if (currentNode.value === value) {
+        return currentNode;
+      }
+      currentNode = currentNode.next;
+    }
+
+    return null;
+  }
 }
 
 const l1 = new LinkedList();
