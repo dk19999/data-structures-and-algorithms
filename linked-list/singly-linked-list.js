@@ -50,6 +50,19 @@ class LinkedList {
     return this;
   }
 
+  toArray() {
+    const result = [];
+
+    let currentNode = this.head;
+
+    while (currentNode) {
+      result.push(currentNode.value);
+      currentNode = currentNode.next;
+    }
+
+    return result;
+  }
+
 }
 
 const l1 = new LinkedList();
